@@ -422,12 +422,16 @@
 <div class="container card p-5">
     <div class="container card p-5">
         <div class="row">
-            <div class="col-6 text-center">
+            <div class="col-4 text-center">
                 <button type="button" class="btn btn-success" id="showForm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Show Form | <i class="fa-regular fa-eye"></i></button>
             </div>
-            <div class="col-6 text-center" >
+            <div class="col-4 text-center" >
                 <button class="btn btn-primary" id="showTable">Show Table | <i class="fa-regular fa-eye"></i></i></button>
                 <button class="btn btn-primary" id="hideTable">Hide Table | <i class="fa-regular fa-eye-slash"></i></button>
+            </div>
+            <div class="col-4 text-center">
+                <a href="/add_student" ><button type="button" class="btn btn-success">Register | <i class="fas fa-plus"></i></button>
+                </a>
             </div>
         </div>
     </div>
@@ -532,8 +536,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success" id="save"
-                            data-bs-dismiss="modal">Save Entries</button>
+                        <button type="button" class="btn btn-success" id="save">Save Entries</button>
                         <button type="button" class="btn btn-danger" id="look">Look Up</button>
                     </div>
                 </div>
@@ -574,9 +577,9 @@
 
                 <div class="card body">
                     <ul class="list-group">
-                        @foreach ($sige as $view)
+                        @foreach ($open as $view)
                             <li class="list-group-item">
-                                {{ $view->Fname}}
+                                {{ $view->name}}
                                 <a href="/show/{{ $view->id }}" class="btn btn-primary btn-sm float-end">View</a>
                             </li>
                         @endforeach

@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ojtController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\WeDoController;
 
 
 /*
@@ -22,3 +24,11 @@ use App\Http\Controllers\ojtController;
 
 Route::get('/', [ojtController::class, 'list']);
 Route::get('/show/{dar}', [ojtController::class, 'show']);
+
+Route::get('/WeDo', [WeDoController::class, 'home']);
+
+Route::get('/add_student', [StudentController::class, 'create']);
+Route::post('/add_student', [StudentController::class, 'store']);
+Route::get('/get_allStudent', [StudentController::class, 'get_allstudent']);
+Route::get('/delete_student', [StudentController::class, 'delete_student']);
+Route::get('/update_student', [StudentController::class, 'update_student']);

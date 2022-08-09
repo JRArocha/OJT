@@ -27,10 +27,13 @@
                     Student #{{ $preview->id}}
                 </div>
                 <div class="card body ">
-                    Full Name: {{ $preview->Fname }}
-                    {{ $preview->Lname }}
+                    Full Name: {{ $preview->name }}
                     <br>
-                    Section: {{ $preview->Section }}
+                    Email: {{ $preview->email }}
+                    <br>
+                    Course: {{ $preview->course }}
+                    <br>
+                    Section: {{ $preview->section }}
                 </div>
             </div>
         </center>

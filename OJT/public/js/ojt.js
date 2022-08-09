@@ -1,7 +1,8 @@
 $(document).ready(function () {
-    
+
     $("#hideTable").hide();
     $("#infoTable").hide();
+
 
     $(document).on('click', "#showTable", function () {
         $("#infoTable").show();
@@ -15,10 +16,10 @@ $(document).ready(function () {
     });
 
     $(document).on('click', "#save", function () {
-        var frmData = $("#frmsave");
-        var formData = new FormData($(frmData)[0]);
+        // var frmData = $("#frmsave");
+        // var formData = new FormData($(frmData)[0]);
         // console.log(formData.serialize());
-        alert(frmData.serialize());
+        // alert(frmData.serialize());
 
 
         fname = $("#firstNameInp").val();
@@ -36,5 +37,4 @@ $(document).ready(function () {
         $("#status").html(stat);
 
     });
-
 });
