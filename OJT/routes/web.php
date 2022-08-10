@@ -31,4 +31,5 @@ Route::get('/add_student', [StudentController::class, 'create']);
 Route::post('/add_student', [StudentController::class, 'store']);
 Route::get('/get_allStudent', [StudentController::class, 'get_allstudent']);
 Route::get('/delete_student', [StudentController::class, 'delete_student']);
-Route::get('/update_student', [StudentController::class, 'update_student']);
+Route::post('/update_student', [StudentController::class, 'update_student']);
+Route::get('/search_student', [StudentController::class, 'search_student']);

@@ -545,45 +545,46 @@
     </form>
 
     <div class="container card p-4 bg-light" id="infoTable">
-        <label class="fst-italic text-primary p-2 text-center text-uppercase">
-            <h5>Information Table</h5>
-        </label>
-        <div class="container p-3">
-            <div class="container card">
-                <label for="fullName" class="fst-italic">Full Name</label>
-                <p id="fnameShow" name="firstNameOut"></p>
-            </div>
-            <div class="container card">
-                <label for="" class="fst-italic">Birthday</label>
-                <p id="bday" name="bday"></p>
-            </div>
-            <div class="container card">
-                <label for="" class="fst-italic">Gender</label>
-                <p id="gender" name="gender"></p>
-            </div>
-            <div class="container card">
-                <label for="" class="fst-italic">Status</label>
-                <p id="status" name="status"></p>
+            <label class="fst-italic text-primary p-2 text-center text-uppercase">
+                <h5>Information Table</h5>
+            </label>
+            <div class="container p-3">
+                <div class="container card">
+                    <label for="fullName" class="fst-italic">Full Name</label>
+                    <p id="fnameShow" name="firstNameOut"></p>
+                </div>
+                <div class="container card">
+                    <label for="" class="fst-italic">Birthday</label>
+                    <p id="bday" name="bday"></p>
+                </div>
+                <div class="container card">
+                    <label for="" class="fst-italic">Gender</label>
+                    <p id="gender" name="gender"></p>
+                </div>
+                <div class="container card">
+                    <label for="" class="fst-italic">Status</label>
+                    <p id="status" name="status"></p>
+                </div>
             </div>
         </div>
-    </div>
-<div class="container card p-3">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card card-default">
-                <div class="card header text-center bg-light">
-                    Database
-                </div>
+        <div class="container card p-3">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-default">
+                    <div class="card header text-center bg-light">
+                        Database
+                    </div>
 
-                <div class="card body">
-                    <ul class="list-group">
-                        @foreach ($open as $view)
-                            <li class="list-group-item">
-                                {{ $view->name}}
-                                <a href="/show/{{ $view->id }}" class="btn btn-primary btn-sm float-end">View</a>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <div class="card body">
+                        <ul class="list-group">
+                            @foreach ($open as $view)
+                                <li class="list-group-item">
+                                    {{ $view->name}}
+                                    <a href="/show/{{ $view->id }}" class="btn btn-primary btn-sm float-end">View</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

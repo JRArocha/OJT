@@ -18,7 +18,6 @@ class StudentController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'course'=>$request->course,
-            'course'=>$request->course,
             'section'=>$request->section
         ];
 
@@ -30,19 +29,40 @@ class StudentController extends Controller
         }
     }
 
-    public function update_student()
+    // public function search_student()
+    // {
+    //     $cmdSearch=Student::search($values)->where('id',$id);
+    //     return response()->json(['status'=>200,'data'=>$cmdSearch]);
+    // }
+
+    public function update_student(Request $request)
     {
-        $cmdUpdate=Student::update($values)->where('id',$id);
-        return response()->json(['status'=>200,'data'=>$cmdDelete]);
+        $id = $request->id;
+        $values=[
+            'name'=>$request->sname,
+            'email'=>$request->semail,
+            'course'=>$request->scourse,
+            'section'=>$request->ssection
+        ];
+
+        $cmdUpdate=Student::where('id', $id)->update($values);
+        if($cmdUpdate){
+            return response()->json(['status'=>200, 'msg'=>'Details updated successfully.']);
+        }else{
+            return response()->json(['status'=>201, 'msg'=>'Error update.']);
+        }
     }
 
-
-    public function delete_student()
+    public function delete_student(Request $request)
     {
-        $cmdDelete=Student::delete($values)->where('id',$id);
-        return response()->json(['status'=>200,'data'=>$cmdDelete]);
+        $id = $request->id;
+        $cmdDelete = Student::where('id', $id)->delete();
+        if($cmdDelete){
+            return response()->json(['status'=>200, 'msg'=>'Student record deleted successfully.']);
+        }else{
+            return response()->json(['status'=>201, 'msg'=>'Error deletion.']);
+        }
     }
-
 
     public function get_allstudent(Request $request)
     {

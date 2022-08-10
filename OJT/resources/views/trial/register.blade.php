@@ -7,7 +7,6 @@
 
     <title>Register Student</title>
 
-    <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,6 +19,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Latest compiled font awesome -->
     <script src="https://kit.fontawesome.com/941ad23302.js" crossorigin="anonymous"></script>
+
+    <!-- public/js/registerStudent.js -->
     <script src="{{ asset('js/registerStudent.js') }}"></script>
 
     <style>
@@ -29,27 +30,23 @@
         }
     </style>
 </head>
-
 <body>
 <div class="container">
     {{-- Search Student --}}
-    <div class="container">
-        <form>
-            <div class="input-group form-control">
-                <input class="form-control" id="searchVal" type="text" placeholder="Search ID here" aria-label="Search for ..." aria-describedby="btnNavbarSearch"/>
-                <button class="btn btn-success" id="btnSearch" type="button">Search | <i class="fas fa-search"></i></button>
-            </div>
-        </form>
+    <div class="input-group p-3">
+        <input class="form-control" id="searchVal" type="text" placeholder="Search ID here" aria-label="Search for ..." aria-describedby="btnNavbarSearch"/>
+        <button class="btn btn-success" id="btnSearch" type="button">Search | <i class="fas fa-search"></i></button>
     </div>
-    <div class="container card p-3 float">
+
+    {{-- Register Button --}}
+    <div class="row p-3">
         <div class="text-center">
             <button class="btn btn-success w-15" id="createBtn">Register Student</button>
-            <button class="btn btn-danger w-15" id="closeBtn">Close</button>
         </div>
     </div>
+
     {{-- Register Students --}}
-    <div class="container card p-2 w-75" id="createRecord">
-        <div class="container p-2">
+    <div class="row p-4 justify-content-center align-center" id="createRecord">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
@@ -76,16 +73,18 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <button id="btnSave" type="button" class="btn btn-primary">Save Student</button>
+                                    <button class="btn btn-danger" id="closeBtn">Close</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
+
     {{-- Show Information --}}
-    <div class="container card">
+    <div class="row card">
         <table class="table table-hover text-center" id="prevTable">
             <thead>
                 <tr>
@@ -102,6 +101,73 @@
 
             </tbody>
         </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="mdlregister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xs modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-light font-monospace">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Personal Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card p-3">
+                        <div class="row g-3">
+                            <div class="col-lg-12 col-md-12">
+                                <form id="updateData">
+                                    <div class="row g-1">
+                                        <p class="text-danger p-1">*Personal Information*</p>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-1 ">
+                                                <input class="form-control w-100" id="sname" name="Name"
+                                                    type="text" placeholder="Enter Name" />
+                                                <label for="missionDate">Full Name <label for=""
+                                                        class="text-danger">*</label></label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control w-100" id="semail" name="Email"
+                                                    type="text" placeholder="Enter Email" />
+                                                <label for="missionDate">Email <label for=""
+                                                        class="text-danger">*</label></label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control w-100" id="scourse" name="Course"
+                                                    type="text" placeholder="Enter Course" />
+                                                <label for="missionDate">Course <label for=""
+                                                        class="text-danger">*</label></label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control w-100" id="ssection" name="Section"
+                                                    type="text" placeholder="Enter Section" />
+                                                <label for="missionDate">Section <label for=""
+                                                        class="text-danger">*</label></label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="btnupdate">Update</button>
+                    <button type="button" class="btn btn-danger" id="look">Look Up</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
