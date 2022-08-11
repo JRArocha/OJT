@@ -9,7 +9,7 @@ class StudentController extends Controller
 {
     public function create()
     {
-        return view ('trial.register');
+        return view ('WeDoOjt');
     }
 
     public function store(Request $request)
@@ -23,26 +23,31 @@ class StudentController extends Controller
 
         $cmdCreate=Student::create($values);
         if($cmdCreate){
-           return response()->json(['status'=>200, 'msg'=>'Details has been successfully registered.']);
+           return response()->json(['status'=>200,'msg'=>'Details has been successfully registered.']);
         }else{
            return response()->json(['status'=>201, 'msg'=>'Error On Save.']);
         }
     }
 
-    // public function search_student()
-    // {
-    //     $cmdSearch=Student::search($values)->where('id',$id);
-    //     return response()->json(['status'=>200,'data'=>$cmdSearch]);
-    // }
+    public function search_student(Request $request)
+    {
+        $id = $request->id;
+        $cmdSearch=Student::where('id',$id)->get();
+        if($cmdSearch){
+            return response()->json(['status'=>200,'data'=>$cmdSearch, 'msg'=>'User Found...']);
+        }else{
+            return response()->json(['status'=>201,'msg'=>'No user found...']);
+        }
+    }
 
     public function update_student(Request $request)
     {
         $id = $request->id;
         $values=[
-            'name'=>$request->sname,
-            'email'=>$request->semail,
-            'course'=>$request->scourse,
-            'section'=>$request->ssection
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'course'=>$request->course,
+            'section'=>$request->section
         ];
 
         $cmdUpdate=Student::where('id', $id)->update($values);
@@ -69,8 +74,4 @@ class StudentController extends Controller
         $cmdSelect=Student::get();
         return response()->json(['status'=>200,'data'=>$cmdSelect]);
     }
-
-
-
-
 }

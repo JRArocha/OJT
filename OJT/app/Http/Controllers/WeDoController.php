@@ -8,6 +8,7 @@ class WeDoController extends Controller
 {
     public function home()
     {
-        return view('WeDo');
+        return view('WeDoOjt');
     }
+
 }

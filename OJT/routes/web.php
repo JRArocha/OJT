@@ -27,6 +27,10 @@ Route::get('/show/{dar}', [ojtController::class, 'show']);
 
 Route::get('/WeDo', [WeDoController::class, 'home']);
 
+
+
+
+
 Route::get('/add_student', [StudentController::class, 'create']);
 Route::post('/add_student', [StudentController::class, 'store']);
 Route::get('/get_allStudent', [StudentController::class, 'get_allstudent']);
