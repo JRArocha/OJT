@@ -4,6 +4,15 @@ $(document).ready(function () {
     $('#createRecord').hide();
     $("#closeBtn").hide();
 
+    // button signin
+    $(document).on('click', '#btnSignin', function(){
+        axios.get('/Dashboard')
+        .then(function(){})
+        .catch(function(error){})
+        .then(function(){});
+    });
+
+    // button search
     $(document).on('click', '#btnSearch', function(){
         var search = $('#searchVal').val();
         axios.get('search_student', {
@@ -15,7 +24,9 @@ $(document).ready(function () {
             var msg = response.data.msg;
             var resultData = response.data.data;
             var status = response.data.status;
-            var responseData;
+            var responseData="";
+            // alert(resultData);
+            // return false;
 
             if(status == 200){
                 $(resultData).each(function(index, row){
@@ -38,6 +49,13 @@ $(document).ready(function () {
         })
         .catch(function(error){})
         .then(function(){});
+    });
+
+    // button clear search
+    $(document).on('click', '#clrSearch', function () {
+        var clear = "";
+        $("#searchVal").val(clear);
+        loadData();
     });
 
     // button delete
@@ -84,13 +102,11 @@ $(document).ready(function () {
             var resultData = response.data.data;
             var msg = response.data.msg
             if(status=='200'){
-                alert(msg);
                 loadData();
                 $('#updateData')[0].reset();
             }else{
                 alert(msg);
             }
-
         })
         .catch(function(error){})
         .then(function(){});
@@ -121,9 +137,6 @@ $(document).ready(function () {
         .catch(function(error){})
         .then(function(){});
     });
-
-
-
 
     // call on create page
     function loadData(){

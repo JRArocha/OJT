@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/R.e7e4d800b99f44d0a4a829f5126ca862?rik=JQWcj5P8Ymgwpw&riu=http%3a%2f%2fwedo.russnino.com%2fwp-content%2fuploads%2f2018%2f03%2flogo-1.png&ehk=Beuc%2b0ybW0GoeV6KXIF7GdgrETR38wHIsB%2bRdgp%2fP%2bA%3d&risl=&pid=ImgRaw&r=0"> --}}
+    <link rel="icon" type="image/x-icon" href="https://th.bing.com/th/id/R.e7e4d800b99f44d0a4a829f5126ca862?rik=JQWcj5P8Ymgwpw&riu=http%3a%2f%2fwedo.russnino.com%2fwp-content%2fuploads%2f2018%2f03%2flogo-1.png&ehk=Beuc%2b0ybW0GoeV6KXIF7GdgrETR38wHIsB%2bRdgp%2fP%2bA%3d&risl=&pid=ImgRaw&r=0">
     <title>WeDo OJT</title>
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,17 +24,17 @@
 </head>
 
 <body>
-    <header class="navbar navbar-expand bg-dark container-fluid-md fixed-top">
-        <div class="col-lg-4 col-md-4">
-            <div class="float-start px-4">
-                <a class="navbar-brand text-danger" id="wedoIcon" href="../trynavbar">
-                <img src="https://th.bing.com/th/id/R.e7e4d800b99f44d0a4a829f5126ca862?rik=JQWcj5P8Ymgwpw&riu=http%3a%2f%2fwedo.russnino.com%2fwp-content%2fuploads%2f2018%2f03%2flogo-1.png&ehk=Beuc%2b0ybW0GoeV6KXIF7GdgrETR38wHIsB%2bRdgp%2fP%2bA%3d&risl=&pid=ImgRaw&r=0" alt="WeDo Logo" style="width:18%;"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <header class="navbar navbar-expand bg-dark container-fluid fixed-top" style="height: 64px;">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="float-start px-5">
+                <a class="navbar-brand text-danger" id="wedoIcon" href="/WeDoDashboard">
+                <img src="https://th.bing.com/th/id/R.e7e4d800b99f44d0a4a829f5126ca862?rik=JQWcj5P8Ymgwpw&riu=http%3a%2f%2fwedo.russnino.com%2fwp-content%2fuploads%2f2018%2f03%2flogo-1.png&ehk=Beuc%2b0ybW0GoeV6KXIF7GdgrETR38wHIsB%2bRdgp%2fP%2bA%3d&risl=&pid=ImgRaw&r=0" alt="WeDo Logo" style="width:2cm; "></a>
+                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> --}}
                 </button>
             </div>
         </div>
-        <div class="col-lg-8 col-md-8">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <div class="float-start px-2">
                 <div class="navbar-nav ">
                     {{-- <a class="nav-link text-light btn btn-dark" id="home" href="#Home">Home</a>
@@ -45,14 +45,14 @@
             </div>
             <div class="float-end px-4">
                 <div class="navbar-nav">
-                    {{-- <a class="nav-link text-light btn btn-dark" id="messageUs" href="#MessageUs"><i class="fa-regular fa-message"></i></a>
-                    <a class="nav-link text-light btn btn-dark" id="login" href="#Login"><i class="fa-solid fa-power-off"></i></a> --}}
+                    <a class="nav-link text-light btn btn-dark" id="messageUs" href="#MessageUs"><i class="fa-regular fa-message"></i></a>
+                    <a class="nav-link text-light btn btn-dark" id="logout" href="/WeDoLogin"><i class="fa-solid fa-power-off"></i></a>
                 </div>
             </div>
         </div>
     </header>
     <div class="container-xxl fixed-left">
-        <aside class="bg-dark bd-sidebar text-muted" style="width: 15%; height: 89%; left: 0; bottom: 0%; position:fixed;">
+        <aside class="bg-dark bd-sidebar text-muted py-3" style="width: 185px; height: 91%; left: 0; bottom: 0%; position:fixed;">
             <a class="nav-link text-light btn btn-dark" id="regBtn" data-bs-target='#createRecord' data-bs-toggle='modal'>Register</a>
             <a class="nav-link text-light btn btn-dark" id="aboutUs" href="#AboutUs">About Us</a>
             <a class="nav-link text-light btn btn-dark" id="services" href="#Services">Services</a>
@@ -61,10 +61,11 @@
         <main class="bd-main order-1" style="position: absolute; top: 13%; left: 16%; width: 83%; height: 100%;">
             <div class="container card ">
 
-                <div class="input-group">
-                    {{-- Search Student --}}
-                    <input class="form-control flex" id="searchVal" type="text" placeholder="Search ID here" aria-label="Search for ..." aria-describedby="btnNavbarSearch" style="width: 89%;"/>
-                    <button class="btn btn-success btn-sm" id="btnSearch" type="button" style="width: 9%;">Search | <i class="fas fa-search"></i></button>
+                {{-- Search Student --}}
+                <div class="input-group py-3">
+                    <input class="form-control flex" id="searchVal" type="text" placeholder="Search ID here" style="width: 85%;" required=""/>
+                    <button type="button" class="btn-light" id="clrSearch"> <i class="fa-solid fa-xmark"></i> </button>
+                    <button class="btn btn-success btn-sm" id="btnSearch" type="button" style="width: 10%;">Search | <i class="fas fa-search"></i></button>
                 </div>
 
                 {{-- Show Information --}}
@@ -87,7 +88,7 @@
 
                         <tfoot>
                             <tr>
-
+                                <td>Footer Here.</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -218,7 +219,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="btnupdate">Update</button>
+                <button type="button" class="btn btn-success" id="btnupdate" data-bs-dismiss="modal">Update</button>
             </div>
         </div>
     </div>
