@@ -63,7 +63,7 @@
 
                 {{-- Search Student --}}
                 <div class="input-group py-3">
-                    <input class="form-control flex" id="searchVal" type="text" placeholder="Search ID here" style="width: 85%;" required=""/>
+                    <input class="form-control flex" id="searchVal" type="text" placeholder="Search ID or section here" style="width: 85%;" required=""/>
                     <button type="button" class="btn-light" id="clrSearch"> <i class="fa-solid fa-xmark"></i> </button>
                     <button class="btn btn-success btn-sm" id="btnSearch" type="button" style="width: 10%;">Search | <i class="fas fa-search"></i></button>
                 </div>
@@ -88,7 +88,7 @@
 
                         <tfoot>
                             <tr>
-                                <td>Footer Here.</td>
+
                             </tr>
                         </tfoot>
                     </table>
@@ -96,6 +96,7 @@
             </div>
         </main>
     </div>
+
 <!-- Modal Register -->
 <div class="modal fade" id="createRecord" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xs modal-dialog-centered">
@@ -160,6 +161,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal Edit -->
 <div class="modal fade" id="mdlregister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xs modal-dialog-centered">

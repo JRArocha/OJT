@@ -45,6 +45,7 @@ $(document).ready(function () {
                 alert(msg);
             }else{
                 alert(msg);
+                $('#tableBody').empty().append(responseData);
             }
         })
         .catch(function(error){})

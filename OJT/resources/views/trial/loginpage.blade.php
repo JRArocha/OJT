@@ -20,7 +20,7 @@
     <!-- Latest compiled font awesome -->
     <script src="https://kit.fontawesome.com/941ad23302.js" crossorigin="anonymous"></script>
 
-    <script src="{{ asset('js/registerStudent.js') }}"></script>
+    <script src="{{ asset('js/WeDoProject.js') }}"></script>
 
 </head>
 
@@ -36,15 +36,8 @@
                     <form class="row g-4 py-2 justify-content-center text-dark">
                         <input class="form-control w-75" type="text" name="login" id="email" placeholder="Email or Phone Number">.
                         <input class="form-control w-75" type="password" name="password" id="password" placeholder="Password">.
-                        <div style="">
-                            <input type="checkbox" id="remember" type="button" placeholder="Remember me"/>
-                            <label class="text-muted">Remember me</label>
-                        </div>
-                        <a href="/WeDoDashboard" type="button" class="btn btn-primary w-75" id="btnSignin">Sign In</a>
-                        <a href="#" class="text-primary text-decoration-none" type="button">Forgot password?</a>
+                        <a href="{{ url('project') }}" type="button" class="btn btn-primary w-75" id="btnSignin">Sign In</a>
                     </form>
-                    <center><hr class="w-75"></center>
-                    <a href="/WeDoSignup" class="btn btn-success" style="width: 35%" type="button" id="">Create account</a>
                 </div>
             </div>
         </div>

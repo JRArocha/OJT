@@ -32,12 +32,15 @@ class StudentController extends Controller
     public function search_student(Request $request)
     {
         $id = $request->id;
-        $cmdSearch=Student::where('id', $id)->get();
-        if($cmdSearch){
-            return response()->json(['status'=>200,'data'=>$cmdSearch, 'msg'=>'User Found...']);
+
+        $cmdSearch=Student::where('id', $id)
+        ->whereOr('section', $id)
+        ->get();
+        if($cmdSearch->count()>0){
+            return response()->json(['status'=>200,'data'=>$cmdSearch, 'msg'=>'Student found...']);
         }
         else{
-            return response()->json(['status'=>201,'msg'=>'No user found...']);
+            return response()->json(['status'=>201,'msg'=>'No student found...']);
         }
     }
 

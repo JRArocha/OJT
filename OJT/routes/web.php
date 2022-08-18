@@ -5,10 +5,18 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ojtController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\WeDoController;
+use App\Http\Controllers\ProjectController;
 
 Auth::routes();
 
-Route::get('/', [WeDoController::class, 'login']);
+Route::get('/', [ProjectController::class, 'login']);
+Route::get('project', [ProjectController::class, 'home']);
+Route::get('apply', [ProjectController::class, 'applicant']);
+Route::get('getapplicant', [ProjectController::class, 'allApplicants']);
+Route::post('create', [ProjectController::class, 'store']);
+Route::get('create', [ProjectController::class, 'create']);
+
+
 Route::get('/show/{dar}', [ojtController::class, 'show']);
 
 Route::get('/WeDo', [WeDoController::class, 'home']);

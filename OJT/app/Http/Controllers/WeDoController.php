@@ -37,4 +37,5 @@ class WeDoController extends Controller
     {
         return view('trial.loginpage');
     }
+
 }
