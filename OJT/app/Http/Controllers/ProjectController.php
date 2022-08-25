@@ -132,8 +132,10 @@ class ProjectController extends Controller
         ->orWhere('field', $info)
         ->orWhere('position', $info)
         ->get();
+
+        $total=$cmdSearch->count();
         if($cmdSearch->count()>0){
-            return response()->json(['status'=>200,'data'=>$cmdSearch, 'msg'=>'Applicant found...']);
+            return response()->json(['status'=>200,'data'=>$cmdSearch, 'count'=>$total,'msg'=>'Applicant found...']);
         }
         else{
             return response()->json(['status'=>500,'msg'=>'No Applicant found...']);

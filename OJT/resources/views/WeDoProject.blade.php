@@ -48,7 +48,7 @@
             </li>
         </ul>
     </nav>
-    <div id="layoutSidenav">
+    <div id="layoutSidenav" style="height: 91%;">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" >
                 <div class="sb-sidenav-menu">
@@ -114,7 +114,7 @@
                 </div>
                 <div class="sb-sidenav-footer py-2">
                     <div class="small">Logged in as:
-                        <p id="user"></p>
+                        <h6 id="user"></h6>
                     </div>
 
                 </div>

@@ -22,7 +22,6 @@
                             <td>Control No.</td>
                             <td>Name</td>
                             <td>Address</td>
-                            <td>Email</td>
                             <td>Position</td>
                             <td>Application Date</td>
                             <td>Assessor ID</td>

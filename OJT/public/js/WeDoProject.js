@@ -74,6 +74,11 @@ $(document).ready(function () {
             var msg = response.data.msg;
             var resultData = response.data.data;
             var status = response.data.status;
+            var total = response.data.count;
+            var clear = "";
+
+            // alert(total);
+
             var responseData="";
 
             if(status == 200){
@@ -82,7 +87,6 @@ $(document).ready(function () {
                     "<td>"+row.ctrlno+"</td>"+
                     "<td>"+row.lname+", "+row.fname+"</td>"+
                     "<td>"+row.prov+" "+row.city+"</td>"+
-                    "<td>"+row.email+"</td>"+
                     "<td>"+row.field+" "+row.position+"</td>"+
                     "<td>"+row.application+"</td>"+
                     "<td>"+row.assessor+"</td>"+
@@ -90,13 +94,16 @@ $(document).ready(function () {
                     "&nbsp;&nbsp;"
 
                     responseData+="</tr>";
+                    $("#total").html(clear);
                 })
+                $("#total").html(total);
                 $('#tableBody').empty().append(responseData);
+
+
             }
 
             else{
-                alert(msg);
-                $('#tableBody').empty().append(responseData);
+                loadData();
             }
         })
         .catch(function(error){})
@@ -170,7 +177,6 @@ $(document).ready(function () {
                 "<td>"+row.ctrlno+"</td>"+
                 "<td>"+row.lname+", "+row.fname+"</td>"+
                 "<td>"+row.prov+" "+row.city+"</td>"+
-                "<td>"+row.email+"</td>"+
                 "<td>"+row.field+" "+row.position+"</td>"+
                 "<td>"+row.application+"</td>"+
                 "<td>"+row.assessor+"</td>"+
