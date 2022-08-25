@@ -30,13 +30,13 @@ $(document).ready(function () {
         .then(function(response){
             $(response.data.data).each(function(index, row){
                 $('#user').text(row.email);
+                $('#interviewer').text(row.email);
+                $('#vassessor').text(row.email);
             })
         })
         .catch(function(error){})
         .then(function(){});
     }
-
-
 
     $(document).on('click', '#btnRegister', function(){
 
@@ -76,7 +76,6 @@ $(document).ready(function () {
             var status = response.data.status;
             var responseData="";
 
-
             if(status == 200){
                 $(resultData).each(function(index, row){
                     responseData+="<tr>"+
@@ -86,14 +85,13 @@ $(document).ready(function () {
                     "<td>"+row.email+"</td>"+
                     "<td>"+row.field+" "+row.position+"</td>"+
                     "<td>"+row.application+"</td>"+
-                    "<td>"+" "+"</td>"+
+                    "<td>"+row.assessor+"</td>"+
                     "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#' data-bs-toggle='modal' id='btnView' value='"+row.id+"' type='button'></button>"+
                     "&nbsp;&nbsp;"
 
                     responseData+="</tr>";
                 })
                 $('#tableBody').empty().append(responseData);
-                alert(msg);
             }
 
             else{
@@ -135,8 +133,8 @@ $(document).ready(function () {
                 work = row.workExp;
                 reason = row.reason;
                 position = row.position + " " + row.field;
-                appdate = row.application
-                assess = "Interviewers ID";
+                appdate = row.application;
+                assess = row.assessor;
 
                 $("#fullname").val(fullname);
                 $("#ctrlno").val(control);
@@ -155,7 +153,6 @@ $(document).ready(function () {
         })
         .catch(function(error){})
         .then(function(){});
-
     });
 
     $(document).on('click', '#btnDownload', function(){
@@ -169,7 +166,6 @@ $(document).ready(function () {
             var total= view.data.total;
             var responseData = "";
             $(showData).each(function(index, row){
-
                 responseData+="<tr>"+
                 "<td>"+row.ctrlno+"</td>"+
                 "<td>"+row.lname+", "+row.fname+"</td>"+
@@ -177,19 +173,18 @@ $(document).ready(function () {
                 "<td>"+row.email+"</td>"+
                 "<td>"+row.field+" "+row.position+"</td>"+
                 "<td>"+row.application+"</td>"+
-                "<td>"+"Interviewer ID"+"</td>"+
+                "<td>"+row.assessor+"</td>"+
                 "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
                 "&nbsp;&nbsp;"
-
                 responseData+="</tr>";
-
             })
             $('#tableBody').empty().append(responseData);
             $('#total').html(total);
-
         })
+
         .catch(function(error){})
         .then(function(){});
     }
+
     loadData();
 });

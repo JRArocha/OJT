@@ -28,6 +28,7 @@ class applicant extends Model
         'field',
         'position',
         'application',
+        'assessor',
         'resume'
     ];
 }

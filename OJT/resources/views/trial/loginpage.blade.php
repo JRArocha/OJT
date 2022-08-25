@@ -31,12 +31,14 @@
                 <img src="https://th.bing.com/th/id/R.e7e4d800b99f44d0a4a829f5126ca862?rik=JQWcj5P8Ymgwpw&riu=http%3a%2f%2fwedo.russnino.com%2fwp-content%2fuploads%2f2018%2f03%2flogo-1.png&ehk=Beuc%2b0ybW0GoeV6KXIF7GdgrETR38wHIsB%2bRdgp%2fP%2bA%3d&risl=&pid=ImgRaw&r=0" alt="" style="width: 65%;">
             </div>
             <div class="col-lg-6 bg-dark text-center">
-                <div class="w-75 bg-dark py-3">
+                <div class="w-75 bg-dark py-2">
                     <h2 class="text-center py-2">Login</h2>
                     <form class="row g-4 py-2 justify-content-center text-dark" >
                         <input class="form-control w-75" type="text" name="username" id="username" placeholder="Email or Phone Number">.
                         <input class="form-control w-75" type="password" name="password" id="password" placeholder="Password">
                         <button class="btn btn-primary w-75" type="button" id="login">Login</button>
+                        <hr class="text-muted w-75">
+                        <button class="btn btn-success w-50" type="button">Create Account</button>
                     </form>
                 </div>
             </div>

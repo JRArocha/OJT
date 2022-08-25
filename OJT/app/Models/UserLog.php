@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserLog extends Model
 {
     use HasFactory;
-    protected $table = 'users';
+    protected $table = 'admins';
 
     protected $fillable =
     [

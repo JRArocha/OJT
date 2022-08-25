@@ -7,7 +7,7 @@
             <div class="row justify-content-between">
                 <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                     <div class="input-group g-3">
-                        <h4 class=" w-50">Pulling System</h4>
+                        <h4 class=" w-50">Pooling System</h4>
                         <input class="form-control" id="searchApplicant" type="text" placeholder="Search for... " aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                         <button type="button" class="btn-sm btn-light" id="clrSearch"> <i class="fa-solid fa-xmark"></i> </button>
                         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
@@ -208,20 +208,13 @@
                                             <span class="text-danger small error-text city_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-12">
                                         <div class="form-floating mb-1 ">
                                             <input class="form-control w-100" id="appDate" name="application"
                                                 type="date" placeholder="Application Date" />
                                             <label for="missionDate">Application Date <label for=""
                                                     class="text-danger">*</label></label>
                                             <span class="text-danger small error-text surname_error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-floating mb-1">
-                                            <input class="form-control w-100" id="assessor" name="assessor" type="text" placeholder="Assessor" />
-                                            <label for="">Interviewers Name <label for="" class="text-danger">*</label></label>
-                                            <span class="text-danger small error-text education_error"></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -373,7 +366,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btnDownload">Download Resume / CV</button>
+                <button type="button" class="btn btn-primary" id="btnDownload">Print Resume / CV</button>
                 <button type="button" class="btn btn-danger" id="btnClose" data-bs-dismiss="modal">Close</button>
             </div>
         </div>

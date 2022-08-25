@@ -46,7 +46,7 @@ class ProjectController extends Controller
 
     public function getloguser(Request $request){
         $id=session()->get('UID');
-        $query = DB::table('users')
+        $query = DB::table('admins')
         ->where('id',$id)
         ->get();
         return response()->json(['status'=>201,'data'=>$query]);
@@ -77,6 +77,9 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $imageName= $request->resume->getClientOriginalName();
+        $id=session()->get('UID');
+        $assessor = DB::table('admins')->where('id',$id)->first();
+
         $values=[
             'fname'=>$request->fname,
             'mname'=>$request->mname,
@@ -94,8 +97,8 @@ class ProjectController extends Controller
             'field'=>$request->field,
             'position'=>$request->position,
             'application'=>$request->application,
+            'assessor'=>$assessor->email,
             'resume'=>$imageName
-
         ];
 
         $cmdCreate=applicant::create($values);

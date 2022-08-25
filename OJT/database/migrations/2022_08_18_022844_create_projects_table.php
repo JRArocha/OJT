@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('position');
             $table->date('application');
             $table->string('resume');
+            $table->string('assessor');
             $table->timestamps();
         });
     }
