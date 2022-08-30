@@ -54,7 +54,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{{ url('project') }}">
+                        <a class="nav-link" href="{{ url('http://dashboard.wedoinc.ph/login.php') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="sb-sidenav-footer py-2 fixed-bottom">
                     <div class="small">Logged in as:
-                        <p id="user"></p>
+                        <h6 id="user"></h6>
                     </div>
 
                 </div>

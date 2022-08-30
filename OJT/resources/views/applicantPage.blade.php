@@ -357,10 +357,10 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="row g-1">
-                                    <p class="text-danger">*Resume Overview*</p>
-                                    <div class="col-lg-12 g-3 py-2">
+                                    <p class="text-danger">*Resume Preview*</p>
+                                    <div class="col-lg-12 gx-2 py-1">
                                         <center>
-                                            <img src="" id="preview" class="w-100">
+                                            <img src="" id="preview" class="w-75" style="height: 550px">
                                         </center>
                                     </div>
                                 </div>
@@ -370,7 +370,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btnDownload">Print Resume / CV</button>
+                <button type="button" class="btn btn-primary" id="btnDownload">Download Resume / CV</button>
                 <button type="button" class="btn btn-danger" id="btnClose" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
