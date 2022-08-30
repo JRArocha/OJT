@@ -14,6 +14,9 @@ Route::get('/login', [ProjectController::class, 'login']);
 Route::get('/fetch_login', [ProjectController::class, 'fetch_login']);
 Route::get('/logout', [ProjectController::class, 'logout']);
 
+Route::get('cadmin', [ProjectController::class, 'cadmin']);
+Route::post('regadmin', [ProjectController::class, 'regadmin']);
+
 
 
 Route::group(['middleware'=>['AuthCheck']], function(){

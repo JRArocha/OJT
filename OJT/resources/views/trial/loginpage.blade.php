@@ -38,8 +38,8 @@
                         <input class="form-control w-75" type="password" name="password" id="password" placeholder="Password">
                         <button class="btn btn-primary w-75" type="button" id="login">Login</button>
                         <hr class="text-muted w-75">
-                        <button class="btn btn-success w-50" type="button">Create Account</button>
                     </form>
+                    <a href="{{ url('cadmin') }}"><button class="btn btn-success w-50" type="button">Create Account</button></a>
                 </div>
             </div>
         </div>

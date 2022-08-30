@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\applicant;
+use Public\image;
 use App\Models\User;
 use App\Models\UserLog;
 use DB;
@@ -13,14 +14,50 @@ use DB;
 
 class ProjectController extends Controller
 {
-    public function logout(Request $request){
+
+    public function regadmin(Request $request)
+    {
+        $values=
+        [
+            'name'=>$request->name,
+            'username'=>$request->username,
+            'password'=>hash::make($request->password),
+            'confirmPassword'=>hash::make($request->password1)
+        ];
+
+        if($request->username)
+        {
+            if($request->password==$request->password1)
+            {
+                $cmdAdmin = UserLog::create($values);
+                return response()->json(['status'=>200,'msg'=>'Details has been successfully registered.']);
+            }
+            else
+            {
+                return response()->json(['status'=>201,'msg'=>'Error creating account']);
+            }
+        }
+        else
+        {
+            return response()->json(['status'=>201,'msg'=>'Username already exists']);
+        }
+    }
+
+    public function cadmin(Request $request)
+    {
+        return view('trial.createaccount');
+    }
+
+    public function logout(Request $request)
+    {
         if(session()->has('UID')){
             session()->pull('UID');
             return redirect('/login');
         }
     }
 
-    public function fetch_login(Request $request){
+    public function fetch_login(Request $request)
+    {
         $username = $request->uname;
         $password = $request->upass;
 
@@ -34,7 +71,7 @@ class ProjectController extends Controller
             if(Hash::check($request->upass, $query->password))
             {
                 $request->session()->put('UID', $query->id);
-                $request->session()->put('email', $query->email);
+                $request->session()->put('name', $query->name);
                 return redirect('/');
             }
             else
@@ -44,7 +81,8 @@ class ProjectController extends Controller
         }
     }
 
-    public function getloguser(Request $request){
+    public function getloguser(Request $request)
+    {
         $id=session()->get('UID');
         $query = DB::table('admins')
         ->where('id',$id)
@@ -71,6 +109,7 @@ class ProjectController extends Controller
     {
         $cmdSelect=applicant::get();
         $total=$cmdSelect->count();
+
         return response()->json(['status'=>200,'data'=>$cmdSelect, 'total'=>$total]);
     }
 
@@ -97,14 +136,13 @@ class ProjectController extends Controller
             'field'=>$request->field,
             'position'=>$request->position,
             'application'=>$request->application,
-            'assessor'=>$assessor->email,
+            'assessor'=>$assessor->name,
             'resume'=>$imageName
         ];
-
+        $request->resume->move(base_path('public/image/'),$imageName);
         $cmdCreate=applicant::create($values);
 
         if($cmdCreate){
-            $request->resume->storeAs('/public/image',$imageName);
            return response()->json(['status'=>200,'msg'=>'Details has been successfully registered.', 'data'=>$cmdCreate]);
         }else{
            return response()->json(['status'=>500, 'msg'=>'Error On Save.']);
@@ -145,10 +183,14 @@ class ProjectController extends Controller
     public function getselected(Request $request)
     {
         $id = $request->id;
+        $picturePath=0;
 
-        $cmdSearch=applicant::where('ctrlno', $id)->get();
+        $cmdSearch=applicant::where('ctrlno', $id)->first();
+
+        $picturePath=asset('image/'.$cmdSearch->resume);
+
         if($cmdSearch->count()>0){
-            return response()->json(['status'=>200, 'data'=>$cmdSearch, 'msg'=>'Applicant found...']);
+            return response()->json(['status'=>200, 'data'=>$cmdSearch, 'msg'=>'Applicant found...','picturePath'=>$picturePath]);
         }
         else{
             return response()->json(['status'=>500,'msg'=>'No Applicant found...']);

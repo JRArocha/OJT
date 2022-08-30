@@ -20,27 +20,24 @@
     <!-- Latest compiled font awesome -->
     <script src="https://kit.fontawesome.com/941ad23302.js" crossorigin="anonymous"></script>
 
-    <script src="{{ asset('js/registerStudent.js') }}"></script>
+    <script src="{{ asset('js/WeDoProject.js') }}"></script>
+
 
 </head>
 
 <body class="bg-dark">
-    <div class="container card w-50">
-        <div class="row">
-            <div class="col-lg-12">
-                    <h4>Create Account</h4>
+    <div class="container w-25 my-4 bg-dark">
+        <div class="row my-5">
+            <div class="col-lg-12 text-light text-center py-5">
+                    <h3>Create Account</h3>
             </div>
             <div class="col-lg-12">
-                <form class="row form-control bg-dark text-light justify-content-center g-2 py-2" action="">
-                    <input type="text" placeholder="Enter First Name">
-                    <input type="text" placeholder="Enter Middle Name">
-                    <input type="text" placeholder="Enter Last Name">
-                    <input type="text" placeholder="Enter Suffix Name">
-                    <input type="date" placeholder="Enter Birthdate">
-                    <input type="text" placeholder="Email or Phone Number" class="form-control w-75">
-                    <input type="password" placeholder="Password" class="form-control w-75">
-                    <input type="password" placeholder="Re-enter Password" class="form-control w-75">
-                    <button class="btn btn-success">Create</button>
+                <form class="row form-control bg-dark text-light justify-content-center g-2 py-2" id="createAdmin" action="">
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Enter Name">
+                    <input class="form-control" type="text" name="username" id="uname" placeholder="Enter Username">
+                    <input class="form-control" type="password" name="password" id="pword" placeholder="Password">
+                    <input class="form-control" type="password" name="password1" id="pword1" placeholder="Re-enter Password">
+                    <button class="btn btn-success" id="btnCreate" type="button">Create</button>
                 </form>
             </div>
         </div>

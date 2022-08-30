@@ -29,9 +29,9 @@ $(document).ready(function () {
         axios.post('/getloguser')
         .then(function(response){
             $(response.data.data).each(function(index, row){
-                $('#user').text(row.email);
-                $('#interviewer').text(row.email);
-                $('#vassessor').text(row.email);
+                $('#user').text(row.name);
+                $('#interviewer').text(row.name);
+                $('#vassessor').text(row.name);
             })
         })
         .catch(function(error){})
@@ -90,7 +90,7 @@ $(document).ready(function () {
                     "<td>"+row.field+" "+row.position+"</td>"+
                     "<td>"+row.application+"</td>"+
                     "<td>"+row.assessor+"</td>"+
-                    "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#' data-bs-toggle='modal' id='btnView' value='"+row.id+"' type='button'></button>"+
+                    "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
                     "&nbsp;&nbsp;"
 
                     responseData+="</tr>";
@@ -127,6 +127,8 @@ $(document).ready(function () {
         .then(function(view){
             var showData = view.data.data;
             var total= view.data.total;
+            var picturePath=view.data.picturePath;
+
             console.log(showData);
             $(showData).each(function(index, row){
                 control=row.ctrlno;
@@ -142,6 +144,7 @@ $(document).ready(function () {
                 position = row.position + " " + row.field;
                 appdate = row.application;
                 assess = row.assessor;
+                resume = row.resume;
 
                 $("#fullname").val(fullname);
                 $("#ctrlno").val(control);
@@ -156,6 +159,7 @@ $(document).ready(function () {
                 $("#vworkExp").val(work);
                 $("#vreason").val(reason);
                 $("#vassessor").val(assess);
+                $("#preview").attr("src",picturePath);
             })
         })
         .catch(function(error){})
@@ -164,6 +168,30 @@ $(document).ready(function () {
 
     $(document).on('click', '#btnDownload', function(){
 
+    });
+
+    $(document).on('click', '#btnCreate', function(){
+        var frmData = $('#createAdmin');
+        var formData = new FormData($(frmData)[0]);
+
+        axios.post('regadmin', formData)
+        .then(function(response){
+            var status=response.data.status;
+            var msg=response.data.msg;
+            var resultData = response.data.data;
+
+            if(status=='200'){
+                alert(msg);
+                // $('#createAdmin')[0].reset();
+                window.location.href = "/";
+            }else{
+                alert(msg);
+
+            }
+
+        })
+        .catch(function(error){})
+        .then(function(){});
     });
 
     function loadData(){

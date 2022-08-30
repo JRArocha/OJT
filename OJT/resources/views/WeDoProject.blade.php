@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="position: fixed; width: 100%">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-center" href="{{ url('/') }}" style="width: 10%"><img src="https://th.bing.com/th/id/R.e7e4d800b99f44d0a4a829f5126ca862?rik=JQWcj5P8Ymgwpw&riu=http%3a%2f%2fwedo.russnino.com%2fwp-content%2fuploads%2f2018%2f03%2flogo-1.png&ehk=Beuc%2b0ybW0GoeV6KXIF7GdgrETR38wHIsB%2bRdgp%2fP%2bA%3d&risl=&pid=ImgRaw&r=0" alt="" style="width: 50%"></a>
         <!-- Sidebar Toggle-->
@@ -48,8 +48,8 @@
             </li>
         </ul>
     </nav>
-    <div id="layoutSidenav" style="height: 91%;">
-        <div id="layoutSidenav_nav">
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" style="position: fixed; height: 100%; width: 210px;">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" >
                 <div class="sb-sidenav-menu">
                     <div class="nav">
@@ -112,9 +112,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer py-2">
+                <div class="sb-sidenav-footer py-2 fixed-bottom">
                     <div class="small">Logged in as:
-                        <h6 id="user"></h6>
+                        <p id="user"></p>
                     </div>
 
                 </div>

@@ -2,8 +2,8 @@
 @section('content')
 
 <div class="layoutSidenav_content container-fluid">
-    <main class="py-3">
-        <div class="container-fluid">
+    <main class="py-5 float-end" style="width: 84%;"    >
+        <div class="container-fluid py-3">
             <div class="row justify-content-between">
                 <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                     <div class="input-group g-3">
@@ -24,7 +24,7 @@
                             <td>Address</td>
                             <td>Position</td>
                             <td>Application Date</td>
-                            <td>Assessor ID</td>
+                            <td>Assessor</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -42,8 +42,8 @@
             </div>
         </div>
     </main>
-    <footer class="text-center text-secondary bg-light">
-        Copyrights @ 2022
+    <footer class="text-center text-secondary bg-light fixed-bottom" style="width: 100%;">
+        Copyrights WeDo 2022
     </footer>
 
 
@@ -358,6 +358,11 @@
                             <div class="col-lg-6">
                                 <div class="row g-1">
                                     <p class="text-danger">*Resume Overview*</p>
+                                    <div class="col-lg-12 g-3 py-2">
+                                        <center>
+                                            <img src="" id="preview" class="w-100">
+                                        </center>
+                                    </div>
                                 </div>
                             </div>
                         </div>

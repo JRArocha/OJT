@@ -14,5 +14,7 @@ class UserLog extends Model
     [
         'username',
         'password',
+        'name',
+        'confirmPassword'
     ];
 }
