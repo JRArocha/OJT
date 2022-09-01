@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    //login
+    // LOGIN
     $(document).on('click', '#login', function(){
         var uname = $('#username').val();
         var upass = $('#password').val();
@@ -38,6 +38,7 @@ $(document).ready(function () {
         .then(function(){});
     }
 
+    // REGISTER BUTTON
     $(document).on('click', '#btnRegister', function(){
 
         var frmData = $('#formRegister');
@@ -62,6 +63,7 @@ $(document).ready(function () {
         .then(function(){});
     })
 
+    // SEARCH
     $(document).on('click', '#btnNavbarSearch', function(){
         var search = $('#searchApplicant').val();
         axios.get('searchapplicant', {
@@ -104,6 +106,7 @@ $(document).ready(function () {
 
             else{
                 loadData();
+                alert(msg);
             }
         })
         .catch(function(error){})
@@ -116,6 +119,7 @@ $(document).ready(function () {
         loadData();
     });
 
+    // VIEW BUTTON
     $(document).on('click', "#btnView", function () {
         var id = $(this).val();
         $('#btnDownload').val(id);
@@ -166,10 +170,23 @@ $(document).ready(function () {
         .then(function(){});
     });
 
+    // DOWNLOAD BUTTON
     $(document).on('click', '#btnDownload', function(){
+        var id = $(this).val();
+        axios.get('/download',{
+            params:{
+                id:id
+            }
+        })
+        .then(function(response){
 
+            window.location.href= '/download';
+        })
+        .catch(function(error){})
+        .then(function(){});
     });
 
+    // CREATE BUTTON
     $(document).on('click', '#btnCreate', function(){
         var frmData = $('#createAdmin');
         var formData = new FormData($(frmData)[0]);

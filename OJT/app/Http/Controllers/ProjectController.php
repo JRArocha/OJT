@@ -9,14 +9,15 @@ use Public\image;
 use App\Models\User;
 use App\Models\UserLog;
 use DB;
-
+use Response;
+use download;
 
 
 class ProjectController extends Controller
 {
-
     public function regadmin(Request $request)
     {
+
         $values=
         [
             'name'=>$request->name,
@@ -34,7 +35,7 @@ class ProjectController extends Controller
             }
             else
             {
-                return response()->json(['status'=>201,'msg'=>'Error creating account']);
+                return response()->json(['status'=>201,'msg'=>'Password Does not match']);
             }
         }
         else
@@ -107,7 +108,7 @@ class ProjectController extends Controller
 
     public function allApplicants(Request $request)
     {
-        $cmdSelect=applicant::get();
+        $cmdSelect=applicant::orderBy('ctrlno', 'DESC')->get();
         $total=$cmdSelect->count();
 
         return response()->json(['status'=>200,'data'=>$cmdSelect, 'total'=>$total]);
@@ -199,6 +200,11 @@ class ProjectController extends Controller
 
     public function getdownload(Request $request)
     {
+        $id = $request->id;
+        $cmdDownload=applicant::find($request->resume)-first();
+        $file=$cmdDownload->resume;
+        $filepath=public_path('image/'.$file);
 
+        return Response::download($filepath);
     }
 }

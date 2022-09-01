@@ -59,10 +59,10 @@
                 <form id="formRegister">
                     <div class="card">
                         <div class="row g-1 p-2">
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-12">
                                 <div class="row g-1">
                                     <p class="text-danger">*Personal Information*</p>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1 ">
                                             <input class="form-control w-100" id="fname" name="fname"
                                                 type="text" placeholder="Enter First Name" />
@@ -71,7 +71,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="mname" name="mname"
                                                 type="text" placeholder="Enter Middle Name" />
@@ -79,7 +79,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="lname" name="lname"
                                                 type="text" placeholder="Enter Last Name" />
@@ -88,7 +88,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="sname" name="sname"
                                                 type="text" placeholder="Enter Suffix Name" />
@@ -96,7 +96,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="bday" name="bday"
                                                 type="date" placeholder="Enter Last Name" />
@@ -105,7 +105,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-12">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
                                             <select  class="form-control" name="gender" id="gender">
                                                 <option value="-">-</option>
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="row g-1 py-1">
                                     <p class="text-danger">*Adddres Information*</p>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1 ">
                                             <input class="form-control w-100" id="city" name="city"
                                                 type="text" placeholder="Enter Municipality or City" />
@@ -128,7 +128,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1 ">
                                             <input class="form-control w-100" id="prov" name="prov"
                                                 type="text" placeholder="Enter Province" />
@@ -137,7 +137,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1 ">
                                             <input class="form-control w-100" id="contact" name="contact"
                                                 type="text" placeholder="Enter Contact Number" />
@@ -146,7 +146,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1 ">
                                             <input class="form-control w-100" id="email" name="email"
                                                 type="text" placeholder="Enter Email" />
@@ -182,7 +182,7 @@
                                         </div>
                                     </div>
                                     <p class="text-danger">*Job Information*</p>
-                                    <div class="col-lg-6 col-md-12">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
                                             <select  class="form-control" name="field" id="field">
                                                 <option value="-">-</option>
@@ -195,7 +195,7 @@
                                             <span class="text-danger small error-text city_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-12">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
                                             <select  class="form-control" name="position" id="position">
                                                 <option value="-">-</option>
@@ -233,6 +233,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal View Applicant-->
 <div class="modal fade" id="viewRecord" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -245,9 +246,9 @@
                 <form id="formView">
                     <div class="card">
                         <div class="row g-1 p-2 gx-2">
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-12">
                                 <div class="row g-1">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-floating mb-1 text-sm">
                                             <input class="form-control w-100" id="ctrlno" name="ctrlno"
                                                 type="text" disabled/>
@@ -255,7 +256,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-floating mb-1 ">
                                             <input class="form-control w-100" id="fullname" name="fullname"
                                                 type="text" disabled/>
@@ -263,7 +264,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="vgender" name="vgender"
                                                 type="text" disabled/>
@@ -271,7 +272,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="vbday" name="vbday"
                                                 type="text" disabled />
@@ -279,7 +280,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="vaddress" name="vaddress"
                                                 type="text" disabled />
@@ -287,7 +288,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-8 col-md-6 col-sm-6">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="vemail" name="vemail"
                                                 type="text" disabled />
@@ -295,7 +296,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-4">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="vnumber" name="vnumber"
                                                 type="text" disabled />
@@ -303,7 +304,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-4">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="vposition" name="vposition"
                                                 type="text" disabled />
@@ -311,7 +312,7 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 col-md-4">
                                         <div class="form-floating mb-1">
                                             <input class="form-control w-100" id="vappdate" name="vappdate"
                                                 type="text" disabled />
@@ -357,10 +358,10 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="row g-1">
-                                    <p class="text-danger">*Resume Preview*</p>
+                                    <p class="text-danger">*File Preview*</p>
                                     <div class="col-lg-12 gx-2 py-1">
                                         <center>
-                                            <img src="" id="preview" class="w-75" style="height: 550px">
+                                            <img src="" id="preview" class="w-75">
                                         </center>
                                     </div>
                                 </div>
@@ -370,7 +371,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btnDownload">Download Resume / CV</button>
+                <button type="button" class="btn btn-primary" id="btnDownload">Download File</button>
                 <button type="button" class="btn btn-danger" id="btnClose" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
