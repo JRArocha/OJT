@@ -33,6 +33,7 @@ return new class extends Migration
             $table->date('application');
             $table->string('resume');
             $table->string('assessor');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    var descVal = "DESC";
     // LOGIN
     $(document).on('click', '#login', function(){
         var uname = $('#username').val();
@@ -92,6 +92,7 @@ $(document).ready(function () {
                     "<td>"+row.field+" "+row.position+"</td>"+
                     "<td>"+row.application+"</td>"+
                     "<td>"+row.assessor+"</td>"+
+                    "<td>"+row.status+"</td>"+
                     "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
                     "&nbsp;&nbsp;"
 
@@ -122,7 +123,7 @@ $(document).ready(function () {
     // VIEW BUTTON
     $(document).on('click', "#btnView", function () {
         var id = $(this).val();
-        $('#btnDownload').val(id);
+        $('#btnPrint').val(id);
         axios.get('select',{
             params:{
                 id: id
@@ -164,6 +165,7 @@ $(document).ready(function () {
                 $("#vreason").val(reason);
                 $("#vassessor").val(assess);
                 $("#preview").attr("src",picturePath);
+                $("#print").attr("href",picturePath);
             })
         })
         .catch(function(error){})
@@ -171,16 +173,22 @@ $(document).ready(function () {
     });
 
     // DOWNLOAD BUTTON
-    $(document).on('click', '#btnDownload', function(){
+    $(document).on('click', '#btnPrint', function(){
         var id = $(this).val();
-        axios.get('/download',{
+        axios.get('/print',{
             params:{
                 id:id
             }
         })
         .then(function(response){
-
-            window.location.href= '/download';
+            var status = response.data.status
+            var resultData = response.data.data;
+            var msg = response.data.msg
+            if(status=='200'){
+                loadData();
+            }else{
+                alert(msg);
+            }
         })
         .catch(function(error){})
         .then(function(){});
@@ -225,6 +233,7 @@ $(document).ready(function () {
                 "<td>"+row.field+" "+row.position+"</td>"+
                 "<td>"+row.application+"</td>"+
                 "<td>"+row.assessor+"</td>"+
+                "<td>"+row.status+"</td>"+
                 "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
                 "&nbsp;&nbsp;"
                 responseData+="</tr>";
@@ -236,6 +245,53 @@ $(document).ready(function () {
         .catch(function(error){})
         .then(function(){});
     }
+
+    $(document).on('click', '#appDateSort', function () {
+        if(descVal == "DESC")
+        {
+            descVal="ASC";
+            $("#appDateSort").removeClass("fa-sort-up").addClass("fa-sort-down");
+        }
+        else
+        {
+            descVal='DESC';
+            $("#appDateSort").removeClass("fa-sort-down").addClass("fa-sort-up");
+        }
+
+        axios.get('/appDate',{
+            params:{
+                descVal:descVal
+            }
+        })
+        .then(function(response){
+            var status = response.data.status;
+            var resultData = response.data.data;
+            var responseData="";
+            if(status == 200){
+                $(resultData).each(function(index, row){
+                    responseData+="<tr>"+
+                    "<td>"+row.ctrlno+"</td>"+
+                    "<td>"+row.lname+", "+row.fname+"</td>"+
+                    "<td>"+row.prov+" "+row.city+"</td>"+
+                    "<td>"+row.field+" "+row.position+"</td>"+
+                    "<td>"+row.application+"</td>"+
+                    "<td>"+row.assessor+"</td>"+
+                    "<td>"+row.status+"</td>"+
+                    "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
+                    "&nbsp;&nbsp;"
+
+                    responseData+="</tr>";
+                })
+                $('#tableBody').empty().append(responseData);
+            }
+            else{
+                loadData();
+                alert(msg);
+            }
+        })
+        .catch(function(error){})
+        .then(function(){});
+    });
 
     loadData();
 });

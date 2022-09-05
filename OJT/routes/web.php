@@ -28,7 +28,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('searchapplicant', [ProjectController::class, 'search']);
     Route::get('select', [ProjectController::class, 'getselected']);
     Route::post('/getloguser', [ProjectController::class, 'getloguser']);
-    Route::get('/download', [ProjectController::class, 'getdownload']);
+    Route::get('/print', [ProjectController::class, 'print']);
+    Route::get('/appDate', [ProjectController::class, 'sort']);
 });
 
 

@@ -23,8 +23,9 @@
                             <td>Name</td>
                             <td>Address</td>
                             <td>Position</td>
-                            <td>Application Date</td>
+                            <td>Application Date <i class="fa-solid fa-sort-up" id="appDateSort" type="button" value="DESC"></i></td>
                             <td>Assessor</td>
+                            <td>Status</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -371,7 +372,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btnDownload">Download File</button>
+                <a href="" id="print">
+                    <button type="button" class="btn btn-primary" id="btnPrint">Print</button>
+                </a>
                 <button type="button" class="btn btn-danger" id="btnClose" data-bs-dismiss="modal">Close</button>
             </div>
         </div>

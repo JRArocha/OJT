@@ -114,11 +114,26 @@ class ProjectController extends Controller
         return response()->json(['status'=>200,'data'=>$cmdSelect, 'total'=>$total]);
     }
 
+    public function sort(Request $request)
+    {
+        $descVal=$request->descVal;
+
+        $cmdSort=applicant::orderBy('application', $descVal)->get();
+
+        if($cmdSort){
+            return response()->json(['status'=>200,'data'=>$cmdSort]);
+        }
+        else{
+            return response()->json(['status'=>201,'msg'=>'Error Sorting...']);
+        }
+    }
+
     public function store(Request $request)
     {
         $imageName= $request->resume->getClientOriginalName();
         $id=session()->get('UID');
         $assessor = DB::table('admins')->where('id',$id)->first();
+        $status='Pending';
 
         $values=[
             'fname'=>$request->fname,
@@ -138,7 +153,8 @@ class ProjectController extends Controller
             'position'=>$request->position,
             'application'=>$request->application,
             'assessor'=>$assessor->name,
-            'resume'=>$imageName
+            'resume'=>$imageName,
+            'status'=>$status,
         ];
         $request->resume->move(base_path('public/image/'),$imageName);
         $cmdCreate=applicant::create($values);
@@ -170,6 +186,8 @@ class ProjectController extends Controller
         ->orWhere('city', $info)
         ->orWhere('field', $info)
         ->orWhere('position', $info)
+        ->orWhere('status', $info)
+        ->orWhere('assessor', $info)
         ->get();
 
         $total=$cmdSearch->count();
@@ -198,13 +216,18 @@ class ProjectController extends Controller
         }
     }
 
-    public function getdownload(Request $request)
+    public function print(Request $request)
     {
         $id = $request->id;
-        $cmdDownload=applicant::find($request->resume)-first();
-        $file=$cmdDownload->resume;
-        $filepath=public_path('image/'.$file);
+        $values=[
+            'status'=>'Success'
+        ];
 
-        return Response::download($filepath);
+        $cmdPrint=applicant::where('ctrlno', $id)->update($values);
+        if($cmdPrint){
+            return response()->json(['status'=>200, 'msg'=>'Print Success']);
+        }else{
+            return response()->json(['status'=>201, 'msg'=>'Error Printing']);
+        }
     }
 }
