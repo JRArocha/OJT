@@ -93,7 +93,10 @@ $(document).ready(function () {
                     "<td>"+row.application+"</td>"+
                     "<td>"+row.assessor+"</td>"+
                     "<td>"+row.status+"</td>"+
-                    "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
+                    "<td>"+row.employeestatus+"</td>"+
+                    "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-pen-to-square' data-bs-target='#updateRecord' data-bs-toggle='modal' id='btnEdit' value='"+row.ctrlno+"' type='button'></button>"+
+                    "&nbsp;&nbsp;"+
+                    "<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
                     "&nbsp;&nbsp;"
 
                     responseData+="</tr>";
@@ -149,43 +152,78 @@ $(document).ready(function () {
                 position = row.position + " " + row.field;
                 appdate = row.application;
                 assess = row.assessor;
-                resume = row.resume;
+                res = row.resume;
+                stat = row.status;
+                estat = row.employeestatus;
+                remark = row.remarks;
 
+                $("#preview").attr("src",picturePath);
+                $("#upremarks").val(remark);
+                $("#vremarks").val(remark);
                 $("#fullname").val(fullname);
+                $("#upfname").val(row.fname);
+                $("#upmname").val(row.mname);
+                $("#uplname").val(row.lname);
+                $("#upsname").val(row.sname);
                 $("#ctrlno").val(control);
                 $("#vgender").val(gender);
+                $("#upgender").val(gender);
                 $("#vbday").val(bday);
+                $("#upbday").val(bday);
                 $("#vaddress").val(address);
+                $("#upprov").val(row.prov);
+                $("#upcity").val(row.city);
                 $("#vemail").val(email);
+                $("#upemail").val(email);
                 $("#vnumber").val(number);
+                $("#upcontact").val(number);
                 $("#vposition").val(position);
+                $("#upfield").val(row.field);
+                $("#upposition").val(row.position);
                 $("#vappdate").val(appdate);
+                $("#upapplication").val(appdate);
                 $("#veducation").val(background);
+                $("#upeducation").val(background);
                 $("#vworkExp").val(work);
+                $("#upworkExp").val(work);
                 $("#vreason").val(reason);
+                $("#upreason").val(reason);
                 $("#vassessor").val(assess);
-                $("#preview").attr("src",picturePath);
-                $("#print").attr("href",picturePath);
+                $("#vstatus").val(stat);
+                $("#upstatus").val(stat);
+                $("#vempstatus").val(estat);
+                $("#upestatus").val(estat);
+                $("#resume").val(res);
+                $("#upresume").val(res);
+
             })
         })
         .catch(function(error){})
         .then(function(){});
     });
 
-    // DOWNLOAD BUTTON
-    $(document).on('click', '#btnPrint', function(){
+    // EDIT BUTTON
+    $(document).on('click', "#btnEdit", function () {
         var id = $(this).val();
-        axios.get('/print',{
-            params:{
-                id:id
-            }
-        })
+        $('#btnupdate').val(id);
+    });
+
+    // BUTTON UPDATE
+    $(document).on('click', '#btnupdate', function () {
+        var id = $(this).val();
+
+        var newData = $('#updateinfo');
+        var NewData = new FormData ($(newData)[0]);
+        NewData.append('id',id);
+
+        axios.post('update', NewData)
         .then(function(response){
             var status = response.data.status
             var resultData = response.data.data;
             var msg = response.data.msg
             if(status=='200'){
                 loadData();
+                $('#updateinfo')[0].reset();
             }else{
                 alert(msg);
             }
@@ -193,6 +231,28 @@ $(document).ready(function () {
         .catch(function(error){})
         .then(function(){});
     });
+
+    // DOWNLOAD BUTTON
+    // $(document).on('click', '#btnPrint', function(){
+    //     var id = $(this).val();
+    //     axios.get('/print',{
+    //         params:{
+    //             id:id
+    //         }
+    //     })
+    //     .then(function(response){
+    //         var status = response.data.status
+    //         var resultData = response.data.data;
+    //         var msg = response.data.msg
+    //         if(status=='200'){
+    //             loadData();
+    //         }else{
+    //             alert(msg);
+    //         }
+    //     })
+    //     .catch(function(error){})
+    //     .then(function(){});
+    // });
 
     // CREATE BUTTON
     $(document).on('click', '#btnCreate', function(){
@@ -233,7 +293,10 @@ $(document).ready(function () {
                 "<td>"+row.application+"</td>"+
                 "<td>"+row.assessor+"</td>"+
                 "<td>"+row.status+"</td>"+
-                "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
+                "<td>"+row.employeestatus+"</td>"+
+                "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-pen-to-square' data-bs-target='#updateRecord' data-bs-toggle='modal' id='btnEdit' value='"+row.ctrlno+"' type='button'></button>"+
+                "&nbsp;&nbsp;"+
+                "<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
                 "&nbsp;&nbsp;"
                 responseData+="</tr>";
             })

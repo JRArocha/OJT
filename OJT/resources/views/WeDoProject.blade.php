@@ -49,14 +49,15 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{{ url('http://dashboard.wedoinc.ph/login.php') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
                         <a class="nav-link" href="{{ url('apply') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users-line"></i></div>
                             Applicants
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Addons</div>
+
+                        <a class="nav-link" href="{{ url('cadmin') }}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus"></i></div>
+                            Create Account
                         </a>
                     </div>
                 </div>

@@ -30,6 +30,8 @@ class applicant extends Model
         'application',
         'assessor',
         'resume',
-        'status'
+        'status',
+        'employeestatus',
+        'remarks'
     ];
 }

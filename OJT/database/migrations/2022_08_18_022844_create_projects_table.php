@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('resume');
             $table->string('assessor');
             $table->string('status');
+            $table->string('employeestatus');
+            $table->string('remarks');
             $table->timestamps();
         });
     }

@@ -126,7 +126,7 @@ class ProjectController extends Controller
         $imageName= $request->resume->getClientOriginalName();
         $id=session()->get('UID');
         $assessor = DB::table('admins')->where('id',$id)->first();
-        $status='Pending';
+
 
         $values=[
             'fname'=>$request->fname,
@@ -147,7 +147,9 @@ class ProjectController extends Controller
             'application'=>$request->application,
             'assessor'=>$assessor->name,
             'resume'=>$imageName,
-            'status'=>$status,
+            'status'=>$request->status,
+            'employeestatus'=>$request->estatus,
+            'remarks'=>$request->remarks,
         ];
         $request->resume->move(base_path('public/image/'),$imageName);
         $cmdCreate=applicant::create($values);
@@ -181,6 +183,7 @@ class ProjectController extends Controller
         ->orWhere('position', $info)
         ->orWhere('status', $info)
         ->orWhere('assessor', $info)
+        ->orWhere('employeestatus', $info)
         ->get();
 
         $total=$cmdSearch->count();
@@ -209,18 +212,40 @@ class ProjectController extends Controller
         }
     }
 
-    public function print(Request $request)
+    public function update(Request $request)
     {
         $id = $request->id;
+        $imageName= $request->resume->getClientOriginalName();
+
         $values=[
-            'status'=>'Success'
+            'fname'=>$request->fname,
+            'mname'=>$request->mname,
+            'lname'=>$request->lname,
+            'sname'=>$request->sname,
+            'bday'=>$request->bday,
+            'gender'=>$request->gender,
+            'city'=>$request->city,
+            'prov'=>$request->prov,
+            'contact'=>$request->contact,
+            'email'=>$request->email,
+            'education'=>$request->education,
+            'workExp'=>$request->workExp,
+            'reason'=>$request->reason,
+            'field'=>$request->field,
+            'position'=>$request->position,
+            'application'=>$request->application,
+            'resume'=>$imageName,
+            'status'=>$request->status,
+            'employeestatus'=>$request->estatus,
+            'remarks'=>$request->remarks,
         ];
 
-        $cmdPrint=applicant::where('ctrlno', $id)->update($values);
-        if($cmdPrint){
-            return response()->json(['status'=>200, 'msg'=>'Print Success']);
+        $request->resume->move(base_path('public/image/'),$imageName);
+        $cmdUpdate=applicant::where('ctrlno', $id)->update($values);
+        if($cmdUpdate){
+            return response()->json(['status'=>200, 'msg'=>'Details updated successfully.', 'data'=>$cmdUpdate]);
         }else{
-            return response()->json(['status'=>201, 'msg'=>'Error Printing']);
+            return response()->json(['status'=>201, 'msg'=>'Error update.']);
         }
     }
 }

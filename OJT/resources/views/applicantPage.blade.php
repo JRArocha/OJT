@@ -26,6 +26,7 @@
                             <td>Application Date <i class="fa-solid fa-sort-up" id="appDateSort" type="button" value="DESC"></i></td>
                             <td>Assessor</td>
                             <td>Status</td>
+                            <td>Result</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -156,10 +157,6 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="row g-1">
                                     <p class="text-danger">*Other Information*</p>
                                     <div class="col-lg-12">
                                         <div class="form-floating mb-1 ">
@@ -182,6 +179,10 @@
                                             <span class="text-danger small error-text education_error"></span>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row g-1">
                                     <p class="text-danger">*Job Information*</p>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-floating mb-1">
@@ -220,7 +221,41 @@
                                     <div class="col-lg-12">
                                         <label class="form-control w-100" for="">Upload Resume <label for=""
                                             class="text-danger">*</label>
-                                        <input class="form-control btn btn-light w-75" type="file" id="resume" name="resume"></label>
+                                        <input class="form-control btn btn-light w-75" type="file" accept="application/pdf" id="resume" name="resume"></label>
+                                    </div>
+                                    <div class="row g-1 py-1">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-floating mb-1">
+                                                <select  class="form-control" name="status" id="status">
+                                                    <option value="-">-</option>
+                                                    <option value="Interviewed">Interviewed</option>
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="No Appearance">No Appearance</option>
+                                                </select>
+                                                <label class="form-check-label" for="inlineCheckbox1">Status <label for="" class="text-danger">*</label></label>
+                                                <span class="text-danger small error-text city_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-floating mb-1">
+                                                <select  class="form-control" name="estatus" id="estatus">
+                                                    <option value="-">-</option>
+                                                    <option value="Hired">Hired</option>
+                                                    <option value="Not Hired">Not Hired</option>
+                                                </select>
+                                                <label class="form-check-label" for="inlineCheckbox1">Employee Status <label for="" class="text-danger">*</label></label>
+                                                <span class="text-danger small error-text city_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-floating mb-1 ">
+                                                <input class="form-control w-100" id="remarks" name="remarks"
+                                                    type="text" placeholder="Result " />
+                                                <label for="missionDate">Remarks <label for=""
+                                                        class="text-danger">*</label></label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +275,7 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-dark text-light font-monospace">
-                <h5 class="modal-title" id="staticBackdropLabel">Applicant Details</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">View Applicant Details</h5>
                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-x"></i></button>
             </div>
             <div class="modal-body">
@@ -355,15 +390,39 @@
                                             <span class="text-danger small error-text surname_error"></span>
                                         </div>
                                     </div>
+                                    <div class="row g-1 py-1">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control w-100" id="vstatus" name="status"
+                                                type="text" disabled />
+                                                <label for="missionDate">Status</label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-floating mb-1">
+                                                <input class="form-control w-100" id="vempstatus" name="empstatus"
+                                                type="text" disabled />
+                                                <label for="missionDate">Employee Status</label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-floating mb-1 ">
+                                                <input class="form-control w-100" id="vremarks" name="remarks" type="text" disabled />
+                                                <label for="missionDate">Remarks</label>
+                                                <span class="text-danger small error-text surname_error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="row g-1">
                                     <p class="text-danger">*File Preview*</p>
                                     <div class="col-lg-12 gx-2 py-1">
-                                        <center>
-                                            <img src="" id="preview" class="w-75">
-                                        </center>
+                                        <iframe src="" id="preview" width="100%" height="500px">
+                                        </iframe>
                                     </div>
                                 </div>
                             </div>
@@ -372,10 +431,224 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="" id="print">
-                    <button type="button" class="btn btn-primary" id="btnPrint">Print</button>
-                </a>
                 <button type="button" class="btn btn-danger" id="btnClose" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Update Info --}}
+<div class="modal fade" id="updateRecord" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-light font-monospace">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Information</h5>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateinfo">
+                    <div class="card">
+                        <div class="row g-1 p-2">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="row g-1">
+                                    <p class="text-danger">*Personal Information*</p>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upfname" name="fname"
+                                                type="text" placeholder="Enter First Name" />
+                                            <label for="missionDate">First Name <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <input class="form-control w-100" id="upmname" name="mname"
+                                                type="text" placeholder="Enter Middle Name" />
+                                            <label for="missionDate">Middle Name</label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <input class="form-control w-100" id="uplname" name="lname"
+                                                type="text" placeholder="Enter Last Name" />
+                                            <label for="missionDate">Last Name <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <input class="form-control w-100" id="upsname" name="sname"
+                                                type="text" placeholder="Enter Suffix Name" />
+                                            <label for="missionDate">Suffix Name</label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <input class="form-control w-100" id="upbday" name="bday"
+                                                type="date" placeholder="Enter Last Name" />
+                                            <label for="missionDate">Birthdate <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <select  class="form-control" name="gender" id="upgender">
+                                                <option value="-">-</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                            <label class="form-check-label" for="inlineCheckbox1">Gender at Birth <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text city_error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-1 py-1">
+                                    <p class="text-danger">*Adddres Information*</p>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upcity" name="city"
+                                                type="text" placeholder="Enter Municipality or City" />
+                                            <label for="missionDate">Municipality/City <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upprov" name="prov"
+                                                type="text" placeholder="Enter Province" />
+                                            <label for="missionDate">Province <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upcontact" name="contact"
+                                                type="text" placeholder="Enter Contact Number" />
+                                            <label for="missionDate">Contact Number <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upemail" name="email"
+                                                type="text" placeholder="Enter Email" />
+                                            <label for="missionDate">Email <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <p class="text-danger">*Other Information*</p>
+                                    <div class="col-lg-12">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upeducation" name="education" type="longtext" placeholder="Educational Background" />
+                                            <label for="">Educational Background <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text education_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upworkExp" name="workExp" type="longtext" placeholder="Work Experience" />
+                                            <label for="missionDate">Previous Work Experience <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-floating mb-1">
+                                            <input class="form-control w-100" id="upreason" name="reason" type="longtext" placeholder="Reason for Leaving" />
+                                            <label for="">Reason for Leaving <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text education_error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row g-1">
+                                    <p class="text-danger">*Job Information*</p>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <select  class="form-control" name="field" id="upfield">
+                                                <option value="-">-</option>
+                                                <option value="IT">Information Technology</option>
+                                                <option value="OPS">Operations</option>
+                                                <option value="Admin">Administration</option>
+                                                <option value="OGM">OGM</option>
+                                            </select>
+                                            <label class="form-check-label" for="inlineCheckbox1">Field <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text city_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <select  class="form-control" name="position" id="upposition">
+                                                <option value="-">-</option>
+                                                <option value="Manager">Manager</option>
+                                                <option value="Employee">Employee</option>
+                                                <option value="Intern">Intern</option>
+                                            </select>
+                                            <label class="form-check-label" for="inlineCheckbox1">Position <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text city_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upapplication" name="application"
+                                                type="date" placeholder="Application Date" />
+                                            <label for="missionDate">Application Date <label for=""
+                                                    class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text surname_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label class="form-control w-100" for="">Upload Resume <label for=""
+                                            class="text-danger">*</label>
+                                            <input class="form-control btn btn-light w-75" type="file" accept="application/pdf" id="resume" name="resume"></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <select  class="form-control" name="status" id="upstatus">
+                                                <option value="-">-</option>
+                                                <option value="Interviewed">Interviewed</option>
+                                                <option value="Pending">Pending</option>
+                                                <option value="No Appearance">No Appearance</option>
+                                            </select>
+                                            <label class="form-check-label" for="inlineCheckbox1">Status <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text city_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-floating mb-1">
+                                            <select  class="form-control" name="estatus" id="upestatus">
+                                                <option value="-">-</option>
+                                                <option value="Hired">Hired</option>
+                                                <option value="Not Hired">Not Hired</option>
+                                            </select>
+                                            <label class="form-check-label" for="inlineCheckbox1">Employee Status <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text city_error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-floating mb-1 ">
+                                            <input class="form-control w-100" id="upremarks" name="remarks" type="longtext" placeholder="Remarks" />
+                                            <label for="">Remarks <label for="" class="text-danger">*</label></label>
+                                            <span class="text-danger small error-text education_error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnupdate" data-bs-dismiss="modal">Update</button>
             </div>
         </div>
     </div>
