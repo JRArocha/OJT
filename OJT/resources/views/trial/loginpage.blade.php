@@ -34,7 +34,7 @@
                 <div class="w-75 bg-dark py-2">
                     <h2 class="text-center py-2">Login</h2>
                     <form class="row g-4 py-2 justify-content-center text-dark" >
-                        <input class="form-control w-75" type="text" name="username" id="username" placeholder="Email or Phone Number">.
+                        <input class="form-control w-75" type="text" name="username" id="username" placeholder="Username">.
                         <input class="form-control w-75" type="password" name="password" id="password" placeholder="Password">
                         <button class="btn btn-primary w-75" type="button" id="login">Login</button>
                         <hr class="text-muted w-75">

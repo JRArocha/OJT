@@ -26,21 +26,14 @@ class ProjectController extends Controller
             'confirmPassword'=>hash::make($request->password1)
         ];
 
-        if($request->username)
+        if($request->password==$request->password1)
         {
-            if($request->password==$request->password1)
-            {
-                $cmdAdmin = UserLog::create($values);
-                return response()->json(['status'=>200,'msg'=>'Details has been successfully registered.']);
-            }
-            else
-            {
-                return response()->json(['status'=>201,'msg'=>'Password Does not match']);
-            }
+            $cmdAdmin = UserLog::create($values);
+            return response()->json(['status'=>200,'msg'=>'Details has been successfully registered.']);
         }
         else
         {
-            return response()->json(['status'=>201,'msg'=>'Username already exists']);
+            return response()->json(['status'=>201,'msg'=>'Password Does not match']);
         }
     }
 

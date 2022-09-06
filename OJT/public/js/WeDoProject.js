@@ -207,7 +207,6 @@ $(document).ready(function () {
 
             if(status=='200'){
                 alert(msg);
-                // $('#createAdmin')[0].reset();
                 window.location.href = "/";
             }else{
                 alert(msg);
