@@ -224,6 +224,7 @@ $(document).ready(function () {
             if(status=='200'){
                 loadData();
                 $('#updateinfo')[0].reset();
+                alert(msg);
             }else{
                 alert(msg);
             }

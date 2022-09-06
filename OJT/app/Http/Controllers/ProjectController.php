@@ -215,37 +215,70 @@ class ProjectController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        $imageName= $request->resume->getClientOriginalName();
 
-        $values=[
-            'fname'=>$request->fname,
-            'mname'=>$request->mname,
-            'lname'=>$request->lname,
-            'sname'=>$request->sname,
-            'bday'=>$request->bday,
-            'gender'=>$request->gender,
-            'city'=>$request->city,
-            'prov'=>$request->prov,
-            'contact'=>$request->contact,
-            'email'=>$request->email,
-            'education'=>$request->education,
-            'workExp'=>$request->workExp,
-            'reason'=>$request->reason,
-            'field'=>$request->field,
-            'position'=>$request->position,
-            'application'=>$request->application,
-            'resume'=>$imageName,
-            'status'=>$request->status,
-            'employeestatus'=>$request->estatus,
-            'remarks'=>$request->remarks,
-        ];
 
-        $request->resume->move(base_path('public/image/'),$imageName);
-        $cmdUpdate=applicant::where('ctrlno', $id)->update($values);
-        if($cmdUpdate){
-            return response()->json(['status'=>200, 'msg'=>'Details updated successfully.', 'data'=>$cmdUpdate]);
+
+
+        if( $request->resume==""){
+            $values=[
+                'fname'=>$request->fname,
+                'mname'=>$request->mname,
+                'lname'=>$request->lname,
+                'sname'=>$request->sname,
+                'bday'=>$request->bday,
+                'gender'=>$request->gender,
+                'city'=>$request->city,
+                'prov'=>$request->prov,
+                'contact'=>$request->contact,
+                'email'=>$request->email,
+                'education'=>$request->education,
+                'workExp'=>$request->workExp,
+                'reason'=>$request->reason,
+                'field'=>$request->field,
+                'position'=>$request->position,
+                'application'=>$request->application,
+                // 'resume'=>$imageName,
+                'status'=>$request->status,
+                'employeestatus'=>$request->estatus,
+                'remarks'=>$request->remarks,
+            ];
+
         }else{
-            return response()->json(['status'=>201, 'msg'=>'Error update.']);
+            $imageName= $request->resume->getClientOriginalName();
+            $request->resume->move(base_path('public/image/'),$imageName);
+            $values=[
+                'fname'=>$request->fname,
+                'mname'=>$request->mname,
+                'lname'=>$request->lname,
+                'sname'=>$request->sname,
+                'bday'=>$request->bday,
+                'gender'=>$request->gender,
+                'city'=>$request->city,
+                'prov'=>$request->prov,
+                'contact'=>$request->contact,
+                'email'=>$request->email,
+                'education'=>$request->education,
+                'workExp'=>$request->workExp,
+                'reason'=>$request->reason,
+                'field'=>$request->field,
+                'position'=>$request->position,
+                'application'=>$request->application,
+                 'resume'=>$imageName,
+                'status'=>$request->status,
+                'employeestatus'=>$request->estatus,
+                'remarks'=>$request->remarks,
+            ];
         }
+
+            $cmdUpdate=applicant::where('ctrlno', $id)->update($values);
+
+            if( $cmdUpdate){
+                return response()->json(['status'=>200, 'msg'=>'Details updated successfully.', 'data'=>$cmdUpdate]);
+
+            }else{
+                return response()->json(['status'=>201, 'msg'=>'Error.']);
+
+            }
+
     }
 }
