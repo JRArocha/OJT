@@ -151,6 +151,8 @@ class ProjectController extends Controller
             'employeestatus'=>$request->estatus,
             'remarks'=>$request->remarks,
         ];
+
+
         $request->resume->move(base_path('public/image/'),$imageName);
         $cmdCreate=applicant::create($values);
 
@@ -216,9 +218,6 @@ class ProjectController extends Controller
     {
         $id = $request->id;
 
-
-
-
         if( $request->resume==""){
             $values=[
                 'fname'=>$request->fname,
@@ -263,7 +262,7 @@ class ProjectController extends Controller
                 'field'=>$request->field,
                 'position'=>$request->position,
                 'application'=>$request->application,
-                 'resume'=>$imageName,
+                'resume'=>$imageName,
                 'status'=>$request->status,
                 'employeestatus'=>$request->estatus,
                 'remarks'=>$request->remarks,

@@ -615,8 +615,9 @@
                                         <div class="form-floating mb-1">
                                             <select  class="form-control" name="status" id="upstatus">
                                                 <option value="-">-</option>
-                                                <option value="Interviewed">Interviewed</option>
                                                 <option value="Pending">Pending</option>
+                                                <option value="Interviewed">Interviewed</option>
+                                                <option value="Final Interview">Final Interview</option>
                                                 <option value="No Appearance">No Appearance</option>
                                             </select>
                                             <label class="form-check-label" for="inlineCheckbox1">Status <label for="" class="text-danger">*</label></label>

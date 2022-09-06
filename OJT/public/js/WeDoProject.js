@@ -340,7 +340,10 @@ $(document).ready(function () {
                     "<td>"+row.application+"</td>"+
                     "<td>"+row.assessor+"</td>"+
                     "<td>"+row.status+"</td>"+
-                    "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
+                    "<td>"+row.employeestatus+"</td>"+
+                    "<td>"+"<button class='btn btn-sm btn-secondary fa-solid fa-pen-to-square' data-bs-target='#updateRecord' data-bs-toggle='modal' id='btnEdit' value='"+row.ctrlno+"' type='button'></button>"+
+                    "&nbsp;&nbsp;"+
+                    "<button class='btn btn-sm btn-secondary fa-solid fa-eye' data-bs-target='#viewRecord' data-bs-toggle='modal' id='btnView' value='"+row.ctrlno+"' type='button'></button>"+
                     "&nbsp;&nbsp;"
 
                     responseData+="</tr>";
